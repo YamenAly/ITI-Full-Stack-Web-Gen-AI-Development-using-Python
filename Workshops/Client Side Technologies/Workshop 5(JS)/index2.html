@@ -1,0 +1,58 @@
+<html>
+    <body>
+        <script>
+            var arr = [];
+            var input;
+            var i = 0;
+            var duplicates = [];
+
+            do{
+                input = prompt("Enter array values");
+                var number = Number(input);
+                do{
+                    if(input.trim() == "" || input == null || isNaN(number)== true){
+                        alert("Enter a valid value.");
+                    }
+                }while(input.trim() == "" || input == null || isNaN(number)== true);
+                arr[i] = number;
+                i++;
+            }while(arr.length<6);
+
+            document.write("<table border= 1 >");
+            document.write("<tr><th>Values</th></tr>");
+            for(i=0; i<arr.length; i++)
+            {
+                document.write("<tr><td>" + arr[i]+"</td></tr>");
+            }
+            document.write("</table><br>");
+
+            for (i = 0; i < arr.length; i++) 
+            {
+                for (j = 0; j < arr.length; j++) 
+                {
+                    if (arr[i] === arr[j]) 
+                    {
+                        if (!duplicates[arr[i]]) {
+                            duplicates[arr[i]] = [];
+                        }
+                        if (duplicates[arr[i]].indexOf(j + 1) === -1) {
+                            duplicates[arr[i]].push(j + 1);
+                        }
+                    }
+                }
+            }
+            
+            var hasDuplicates = false;
+            document.write("<h3>Repeated Values and Their Rows:</h3>");
+
+            for (var key in duplicates) {
+                if (duplicates[key].length > 1) {
+                    hasDuplicates = true;
+                    document.write(
+                        "Value: <b>" + key + "</b> — Rows: " + duplicates[key].join(", ") + "<br>"
+                    );
+                }
+            }
+        </script>
+    </body>
+</html>

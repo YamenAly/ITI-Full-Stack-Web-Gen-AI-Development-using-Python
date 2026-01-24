@@ -1,0 +1,40 @@
+    <html>
+        <body>
+            <script>
+                var name;
+                var mobile;
+                do{
+                    name = prompt("Enter your name");
+                    if(name=== null || name.trim()=== "" || isNaN(name)=== false)
+                    {
+                        alert("Please Enter a valid name");
+                    }
+                }while(name=== null || name.trim()=== "" || isNaN(name)=== false);
+
+                do{
+                    mobile = prompt("Enter your mobile number (xxx-xxxxxxx)");
+                    if(mobile === null || mobile.length!== 12)
+                    {
+                        alert("Invalid number, length must be 12");
+                    }
+                    if(mobile.charAt(3) !== "-")
+                    {
+                        alert("Invalid format. Use xxx-xxxxxxx");
+                    }
+                    
+                    var prefix = mobile.substring(0,3);
+                    var numbers = mobile.substring(4);
+
+                    if (prefix !== "010" && prefix !== "011" && prefix !== "012" && prefix !== "015")
+                        {alert("Invalid prefix. Must start with 010, 011, 012, or 015.");}
+                    
+                    if(isNaN(numbers)== true || numbers.length !== 8)
+                        {alert("Invalid digits. The last part must be exactly 8 numbers");}
+                    
+                    
+                }while(mobile === null || mobile.trim() === "" || isNaN(Number(prefix) === true) || isNaN(Number(numbers) === true));
+                document.write(name + "<br>");
+                document.write(mobile);
+            </script>
+        </body>
+    </html>

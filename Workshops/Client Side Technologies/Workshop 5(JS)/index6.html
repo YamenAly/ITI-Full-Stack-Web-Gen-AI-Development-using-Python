@@ -1,0 +1,51 @@
+<html>
+    <body>
+        <script>
+            var grades = [];
+            var i, j;
+            var sum;
+            var input;
+
+            for(i=0; i < 2; i++)
+            {
+                grades[i] = [];
+                for(j=0; j<3; j++)
+                {
+                    do{
+                        input = prompt("Enter grade for Student "+(i+1)+", Course " + (j+1));
+                        
+                        if(input === null || input.trim() === "" || isNaN(input))
+                        {
+                            alert("Please enter a valid number");
+                        }
+                        grades[i][j] = Number(input);
+                    }while(input === null || input.trim() === "" || isNaN(input));
+                }
+                
+            }
+
+            document.write("<table border='1'>");
+            document.write("<tr>");
+            document.write("<th>ST1</th>")
+            document.write("<th>ST2</th>")
+            document.write("<th>ST3</th>")
+            document.write("<th>Sum</th>")
+            document.write("</tr>");
+
+            for(i=0; i<grades.length; i++)
+            {
+                sum = 0;
+                document.write("<tr>");
+
+                for(j = 0; j < grades[i].length; j++)
+                {
+                    document.write("<td>"+ grades[i][j]+"</td>");
+                    sum += grades[i][j];
+                }
+                document.write("<td>"+sum+"</td>");
+                document.write("</tr>");
+            }
+            document.write("</table>");
+        </script>
+    </body>
+</html>

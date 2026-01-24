@@ -1,0 +1,48 @@
+<html>
+    <body>
+        <style>
+            #image_wrapper{
+                width: 300px;
+                height: 300px;
+                padding: 30px;
+            }
+            #controlswrapper{
+                padding: 20px
+            }
+        </style>
+        <div>
+            <div id="image_wrapper">
+                <img src="UP/1.jpg" id="myimg" />
+                <br>
+                <p id="imageIndex"></p>
+            </div>
+            <div id="controlswrapper">
+                <input type="button" value="Start" onclick="startfun();" id="start" />
+            </div>
+        </div>
+
+        <script>
+            var imagearr = ["UP/1.jpg", "UP/2.jpg", "UP/3.jpg", "UP/4.jpg", "UP/5.jpg", "UP/6.jpg", "UP/7.jpg", "UP/8.jpg", "UP/9.jpg", "UP/10.jpg"];
+            var current = 0;
+            var t;
+            function startfun() {
+                if(t != undefined)
+                    return;
+                t=setInterval("nextfun()", 1500);
+            }
+            function nextfun() {
+                current++;
+                if (current >= imagearr.length)
+                    {
+                        current = 0;
+                        window.close();
+                    }
+                else    {
+                        myimg.src = imagearr[current];
+                        document.getElementById("imageIndex").innerHTML = imagearr.length - current;
+                    }
+
+            }
+        </script>
+    </body>
+</html>

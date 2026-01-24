@@ -1,0 +1,27 @@
+.Forms{
+    display: flex;
+    border-bottom-style: solid;
+    border-color: lightgray;
+    padding: 20px;
+}
+
+.Button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray;
+    margin-left: auto;
+    margin-top: 27px;
+    padding: 5px 20px;
+    border-radius: 10px;
+    height: 20px;
+
+}
+.Titles{
+    color: #38a0bf;
+    font-size: 25px;
+    padding-bottom: 10px;
+}
+.Content{
+    font-size: 20px;
+}

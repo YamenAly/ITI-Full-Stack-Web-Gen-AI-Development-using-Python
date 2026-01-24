@@ -1,0 +1,15 @@
+<html>
+    <body>
+        <p id="message"></p>
+        <script>
+            var message = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic expedita iste asperiores reprehenderit cupiditate, totam nesciunt nam vel sapiente obcaecati maxime aliquam nulla doloremque laborum autem ducimus commodi in dicta?";
+            var i = 0;
+            setInterval(function (){
+                if(i>=message.length)
+                    return;
+                document.getElementById("message").innerHTML += message[i];
+                i++;
+            }, 50)
+        </script>
+    </body>
+</html>

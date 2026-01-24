@@ -1,0 +1,42 @@
+<html>
+    <head><h2 id="Bottle">Bottle </h2><h2>Game</h2><br></head>
+    <body>
+        
+        <img src="index5stars.png" alt="stars"><br>
+        <img id="spin" src="index5.png" alt="spin the bottle"><br><br><br>
+        <span id="userinput">input</span><input type="text" id="nameinputs"> 
+        <style>
+
+            head, body{
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+            }
+            h2{
+                display: inline;
+            }
+            #Bottle{
+                color: #63bed8;
+            }
+            img{
+                width: 400px;
+            }
+            #spin{
+                border: 4px solid #edd527;
+            }
+            #userinput{
+                padding: 5px;
+                color: white;
+                background-color: #00b050;
+            }
+            input{
+                width: 200px;
+            }
+        </style>
+        <script>
+            var usersInput = document.getElementById("nameinputs");
+            var cleaned = usersInput.split(",");
+            console.log(cleaned);
+        </script>
+    </body>
+</html>
