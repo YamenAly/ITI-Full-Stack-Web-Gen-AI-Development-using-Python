@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <h2>Heading</h2>
+        <hr>
+    </head>
+    <body>
+        <script>
+            var num = 1;
+            do
+            {
+                do{
+                    var message = prompt("Enter Message");
+                    if(message === null || message === ""){
+                        alert("Message is empty, please enter a valid message");
+                    }
+                }while(message === null || message === "");                
+                
+                document.write("<h" + num + ">" + message +"</h" + num +">");
+                num++;
+
+            }while(num<=6);  
+        </script>
+    </body>
+</html>
