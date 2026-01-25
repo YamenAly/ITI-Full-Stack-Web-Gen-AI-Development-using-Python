@@ -61,11 +61,19 @@
                     if(event.key === "Enter")
                     {   
                         cleanedInput = userInput.value.split(",");
+                        
                         for(i in cleanedInput)
                         {
+                            for (var k = 0; k < cleanedInput[i].length; k++) {
+                                var char = cleanedInput[i][k];
+
+                                if (char >= "0" && char <= "9") {
+                                    alert("Enter text only. No numbers allowed.");
+                                    return;
+                                }
+                            }                            
                             cleanedInput[i] = cleanedInput[i].trim();
                         }
-                        // console.log(cleanedInput);
                         if(cleanedInput.length < 2)
                         {
                             alert("Please enter atleast 2 names");
@@ -79,10 +87,7 @@
                         }while(i == j);
                         var display = i +", "+ j;
                         document.getElementById("players").innerHTML = display;
-                    }
-                    
-
-                    
+                    }                    
                 });
             });    
         </script>

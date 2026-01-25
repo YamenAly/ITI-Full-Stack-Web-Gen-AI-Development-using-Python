@@ -1,0 +1,24 @@
+<html>
+    <body>
+        <div id = "result">
+
+        </div>
+        <script>
+            var data = new URLSearchParams(window.location.search);
+            
+            var name = data.get("name");
+            var gender = data.get("gender");
+            var color = data.get("color");
+            console.log(name);
+            console.log(gender);
+            console.log(color);
+
+            if(gender == "male")
+                document.write("<img src= 'male.png' alt= 'male'>" + "<span>Welcome, <font color = '"+ color +"'>" + name +"</font></span>");
+            else
+                document.write("<img src= 'female.png' alt= 'female'>" + "<span>Welcome, <font color = '"+color+"'>" + name +"</font></span>");
+
+                
+        </script>
+    </body>
+</html>

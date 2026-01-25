@@ -1,0 +1,73 @@
+<html>
+    <body>
+        <style>
+            span{
+                font-weight: bold;
+                margin-bottom: 50px;
+                margin-right: 30px;
+                padding-bottom: 50px;
+            }
+            #age{
+                margin-left: 18px ;
+            }
+            #malebtn{
+                margin-right: 250px;
+            }
+            #registerbtn{
+                margin-left: 80px;
+            }
+        </style>
+        <form method="get" action="index6.1.html" id="registerForm">
+            <span>Enter your name:</span><input type="text" name="name" id="name">
+            <br><br>
+            <span>Enter your age:</span><input type="text" name="age" id="age">
+            <br><br>
+            <span>Select your Gender:</span><br>
+            <img src="male.png" alt="male"><img src="female.png" alt="female">
+            <br><br>
+            <input type="radio" name="gender" value="male" id="malebtn" required><input type="radio" name="gender" value="female" id="femalebtn">
+            <br><br>
+            <span>Select your favourite color:</span>
+            <select name="color" id="favcolor" required>
+                <option value="red">Red</option>
+                <option value="green">Green</option>
+                <option value="blue">Blue</option>
+            </select>
+            <br><br>    
+            <input type="submit" value="Register" id="registerbtn">
+        </form>
+        <script>
+                document.getElementById("registerForm").addEventListener("submit", function(event){
+                    event.preventDefault();
+
+                    var name = document.getElementById("name").value.trim();
+                    var age = document.getElementById("age").value.trim();
+                    var color = document.getElementById("favcolor").value;
+                    
+                    if(name === "" || age === "")
+                    {
+                        alert("All fields are required");
+                        return;
+                    }
+
+                    for(i in name)
+                    {
+                        if(!isNaN(name[i]) && name[i] !==" ")
+                        {
+                            alert("Name must contain letters only");
+                            return;
+                        }
+                    }
+                    for(i in age)
+                    {
+                        if(isNaN(age[i]) && age[i]==" ")
+                        {
+                            alert("Age must contain numbers only");
+                            return;
+                        }
+                    }
+                    event.target.submit();
+                }); 
+        </script>
+    </body>
+</html>

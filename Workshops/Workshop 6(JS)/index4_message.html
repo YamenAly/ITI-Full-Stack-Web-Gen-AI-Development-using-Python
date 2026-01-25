@@ -6,9 +6,10 @@
             var i = 0;
             setInterval(function (){
                 if(i>=message.length)
-                    return;
+                        window.close();
                 document.getElementById("message").innerHTML += message[i];
                 i++;
+
             }, 50)
         </script>
     </body>
