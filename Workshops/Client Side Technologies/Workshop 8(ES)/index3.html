@@ -1,0 +1,195 @@
+<html>
+    <body>
+        <style>
+            #text {
+                padding: 15px;
+                margin-bottom: 10px;
+            }
+
+            .arial { font-family: Arial, sans-serif; }
+            .courier { font-family: "Courier New", monospace; }
+            .georgia { font-family: Georgia, serif; }
+            .impact { font-family: Impact, sans-serif; }
+            .TimesNewRoman { font-family: 'Times New Roman'; }
+            .verdana { font-family: Verdana, sans-serif; }
+
+            .left { text-align: left; }
+            .center { text-align: center; }
+            .right { text-align: right; }
+            .justify { text-align: justify; }
+
+            .normal { line-height: normal; }
+            .\31 0px { line-height: 10px; }     
+            .\31 5px { line-height: 15px; }     
+            .\31\.5px { line-height: 1.5; }
+
+            .\-1px { letter-spacing: -1px; }
+            .\32 px { letter-spacing: 2px; }
+            .\33 px { letter-spacing: 3px; }
+
+            .\30 px { text-indent: 0px; }
+            .\35 px { text-indent: 5px; }
+            .\31 5px { text-indent: 15px; }
+            .\32 5px { text-indent: 25px; }
+
+            .none { text-transform: none; }
+            .capitalize { text-transform: capitalize; }
+            .uppercase { text-transform: uppercase; }
+            .lowercase { text-transform: lowercase; }
+
+            .underline { text-decoration: underline; }
+            .overline { text-decoration: overline; }
+            .line-through { text-decoration: line-through; }
+
+            .noneBorder { border-style: none; }
+            .dotted { border-style: dotted; }
+            .double { border-style: double; }
+            .groove { border-style: groove; }
+            .dashed { border-style: dashed; }
+            .inset { border-style: inset; }
+            .solid { border-style: solid; }
+            .outset { border-style: outset; }
+            .ridge { border-style: ridge; }
+
+            .red { border-color: red; }
+            .green { border-color: green; }
+            .blue { border-color: blue; }
+            .pink { border-color: pink; }
+            .yellow { border-color: yellow; }
+            .purple { border-color: purple; }
+
+
+        </style>
+        <div id="text">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Optio et animi, nobis aliquid ratione laboriosam saepe, id at similique minus odit quisquam voluptate harum omnis ullam quidem deserunt sunt facere.</p>
+        </div>
+        <table>
+            <tr>
+                <th>fontFamily</th>
+                <th>textAlign</th>
+                <th>lineHeight</th>
+                <th>letterSpacing</th>
+                <th>textIndent</th>
+                <th>textTransform</th>
+                <th>textDecoration</th>
+                <th>textBorder</th>
+                <th>Bordercolor</th>
+            </tr>
+            <tr>
+                <td><input type="radio" name="fontFamily" id="arial" value="arial">arial</td>
+                <td><input type="radio" name="textAlign" id="left" value="left">left</td>
+                <td><input type="radio" name="lineHeight" id="normalH" value="normal">normal</td>
+                <td><input type="radio" name="letterSpacing" id="normalS" value="normal">normal</td>
+                <td><input type="radio" name="textIndent" id="zero" value="0px">0px</td>
+                <td><input type="radio" name="textTransform" id="noneTrans" value="none">none</td>
+                <td><input type="radio" name="textDecoration" id="noneDec" value="none">none</td>
+                <td><input type="radio" name="textBorder" id="noneBorder" value="noneBorder">none</td>
+                <td><input type="radio" name="Bordercolor" id="Bordercolor" value="border-none">none</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="fontFamily" id="courier" value="courier">courier</td>
+                <td><input type="radio" name="textAlign" id="center" value="center">center</td>
+                <td><input type="radio" name="lineHeight" id="10H" value="10px">10px</td>
+                <td><input type="radio" name="letterSpacing" id="neg1S" value="-1px">-1px</td>
+                <td><input type="radio" name="textIndent" id="5pix" value="5px">5px</td>
+                <td><input type="radio" name="textTransform" id="capitalize" value="capitalize">capitalize</td>
+                <td><input type="radio" name="textDecoration" id="line-through" value="line-through">line-through</td>
+                <td><input type="radio" name="textBorder" id="dotted" value="dotted">dotted</td>
+                <td><input type="radio" name="Bordercolor" id="BordercolorPink" value="pink">pink</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="fontFamily" id="georgia" value="georgia">georgia</td>
+                <td><input type="radio" name="textAlign" id="right" value="right">right</td>
+                <td><input type="radio" name="lineHeight" id="15H" value="15px">15px</td>
+                <td><input type="radio" name="letterSpacing" id="2S" value="2px">2px</td>
+                <td><input type="radio" name="textIndent" id="15pix" value="15px">15px</td>
+                <td><input type="radio" name="textTransform" id="uppercase" value="uppercase">uppercase</td>
+                <td><input type="radio" name="textDecoration" id="overline" value="overline">overline</td>
+                <td><input type="radio" name="textBorder" id="double" value="double">double</td>
+                <td><input type="radio" name="Bordercolor" id="BordercolorRed" value="red">red</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="fontFamily" id="impact" value="impact">impact</td>
+                <td><input type="radio" name="textAlign" id="justify" value="justify">justify</td>
+                <td><input type="radio" name="lineHeight" id="1.5H" value="1.5px">1.5px</td>
+                <td><input type="radio" name="letterSpacing" id="3S" value="3px">3px</td>
+                <td><input type="radio" name="textIndent" id="25pix" value="25px">25px</td>
+                <td><input type="radio" name="textTransform" id="lowercase" value="lowercase">lowercase</td>
+                <td><input type="radio" name="textDecoration" id="underline" value="underline">underline</td>
+                <td><input type="radio" name="textBorder" id="groove" value="groove">groove</td>
+                <td><input type="radio" name="Bordercolor" id="BordercolorGreen" value="green">Green</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="fontFamily" id="TimesNewRoman" value="TimesNewRoman">Times New Roman</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="radio" name="textBorder" id="dashed" value="dashed">dashed</td>
+                <td><input type="radio" name="Bordercolor" id="BordercolorBlue" value="blue">Blue</td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="fontFamily" id="verdana" value="verdana">verdana</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="radio" name="textBorder" id="inset" value="inset">inset</td>
+                <td><input type="radio" name="Bordercolor" id="BordercolorYellow" value="yellow">Yellow</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="radio" name="textBorder" id="solid" value="solid">solid</td>
+                <td><input type="radio" name="Bordercolor" id="BordercolorPurple" value="purple">purple</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="radio" name="textBorder" id="outset" value="outset">outset</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><input type="radio" name="textBorder" id="ridge" value="ridge">ridge</td>
+                <td></td>
+            </tr>
+        </table>
+        <script>
+            var text= document.getElementById("text");
+            var radio= document.querySelectorAll("input[type=radio]");
+            
+            for(var i=0; i< radio.length; i++){
+                radio[i].onclick =  (e) => {
+                    const clicked = e.target;
+                    var group = document.getElementsByName(clicked.name);
+
+                    for (var j = 0; j < group.length; j++) {
+                        text.classList.remove(group[j].value);
+                    }
+                    text.classList.toggle(clicked.value);
+                };
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Country Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        input {
+            padding: 8px;
+            width: 200px;
+        }
+
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        p{
+            height:36px;
+        }
+
+        #result {
+            margin-top: 5px;
+            padding: 3px;
+            border: 3px solid #000;
+            width: 200px;
+            border-radius: 5px;
+            border-style: ridge;
+        }
+
+        #flag {
+            width: 200px;
+            display: block;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        #pop, #lang, #currency{
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        #name{
+            color:#555555;
+            text-indent: 5px;
+        }
+        #region{
+            color: gray;
+            text-indent: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Search Country</h2>
+
+    <input type="text" id="countryName" placeholder="Enter country name">
+    <button onclick="getCountry()">Search</button>
+
+    <div id="result"></div>
+
+    <script>
+        async function getCountry() {
+            const name = document.getElementById("countryName").value.trim();
+            const resultDiv = document.getElementById("result");
+
+            if (name === "") {
+                alert("Please enter a country name");
+                return;
+            }
+
+        
+            const res = await fetch(`https://restcountries.com/v2/name/${name}`);
+            const data = await res.json();
+
+            const country = data[0];
+
+            // const population = country.population;
+            const formatPopulation = () => {
+                if(country.population>=1_000_000_000){
+                    return (country.population/1_000_000_000).toFixed(1) + " B People";
+                }else if(country.population>=1_000_000){
+                    return (country.population/1_000_000).toFixed(1) + " M People";
+                }else if(country.population>=1_000){
+                    return (country.population/1_000).toFixed(1) + " K People";
+                }else
+                    {return country.population;}
+            };
+
+            resultDiv.innerHTML = `
+                
+                <img src="${country.flag}" alt="Flag of ${country.name}" id = "flag">
+                <h3 id="name">${country.name}</h3>
+                <p id="region">${country.region}</p>
+                <p><img src = "./population.png" alt= "Population of ${country.name}" id = "pop"> ${formatPopulation(country.population)}</p>
+                <p><img src = "./language.png" alt= "Language of ${country.name}" id = "lang">${country.languages[0].name}</p>
+                <p><img src = "./currency.png" alt= "Currency of ${country.name}" id = "currency">${country.currencies[0].name}</p>
+                
+            `;
+        }
+    </script>
+
+</body>
+</html>

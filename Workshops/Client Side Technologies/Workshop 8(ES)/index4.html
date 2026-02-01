@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <style>
+            div{
+                border: 3px solid black;
+                width: fit-content;
+            }
+            form{
+                margin: 15px;
+            }
+            p{
+                border: 1px solid gray;
+                border-radius: 2px;
+                width: 178px;
+                height: 20px;
+
+            }
+        </style>
+        <div>
+            <form action="">
+                <table>
+                    <tr>
+                        <td>Name:</td><td><input type="text" name="name" id="name" autofocus>
+                            <span id="nameError" style="color: red;"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Country:</td><td><select name="Country" id="Country">
+                                                <option value="Egypt">Egypt</option>
+                                                <option value="Saudi Arabia">Saudi Arabia</option>
+                                                <option value="UAE">UAE</option>
+                                              </select>
+                                        </td>
+                    </tr>
+                    <tr>
+                        <td>Zip:</td><td><p id="zip"></p></td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td><td><input type="text" name="email" id="email">
+                                            <span id="emailError" style="color:red"></span>
+                                        </td>
+                    </tr>
+                    <tr>
+                        <td>Hobbies:</td><td colspan="4"><input type="checkbox" name="hobbies" value="writing">writing
+                                                         <input type="checkbox" name="hobbies" value="reading">reading
+                                                         <input type="checkbox" name="hobbies" value="swimming">swimming
+                                                         <input type="checkbox" name="hobbies" value="sleeping">sleeping
+                                                         <br>
+                                                         <span id="hobbyError" style="color: red;"></span>
+
+                                         </td>
+                    </tr>
+                    <tr><td><input type="submit" name="Register" id="register" value="Register"></td><td><span id="success" style="color: green;"></span></td></tr>
+                    <tr><td><input type="button" name="clear" id="clear" value="Clear"></td></tr>
+                </table>
+            </form>
+        </div>
+        <script>
+            const form = document.querySelector("form");
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const countrySelect = document.getElementById("Country");
+            const zip = document.getElementById("zip");
+            const clearBtn = document.getElementById("clear");
+
+            const zipCodes = {
+                "Egypt": "1111",
+                "Saudi Arabia": "2222",
+                "UAE": "3333"
+            };
+
+            const nameRegex = /^[A-Za-z]+( [A-Za-z]+)*$/;
+            const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            zip.textContent = zipCodes[countrySelect.value];
+
+            countrySelect.addEventListener("change", () => {
+                zip.textContent = zipCodes[countrySelect.value];
+            });
+
+            form.addEventListener("submit", function(event) {
+                event.preventDefault();
+                
+                document.getElementById("nameError").textContent = "";
+                document.getElementById("emailError").textContent = "";
+                document.getElementById("hobbyError").textContent = "";
+                document.getElementById("success").textContent = "";
+
+                const name = nameInput.value.trim();
+                const email = emailInput.value.trim();
+                const hobby = document.querySelector('input[name="hobbies"]:checked');
+
+                if (!nameRegex.test(name)) {
+                    document.getElementById("nameError").textContent = "Enter a valid name";
+                    nameInput.focus();
+                    return;
+                }
+
+                if (!emailRegex.test(email)) {
+                    document.getElementById("emailError").textContent = "Enter a valid email";
+                    emailInput.focus();
+                    return;
+                }
+
+                if (!hobby) {
+                    document.getElementById("hobbyError").textContent = "Please choose a hobby";
+                    return;
+                }
+
+                document.getElementById("success").textContent = "Form submitted successfully!";
+            });
+
+            clearBtn.addEventListener("click", () => {
+            if(confirm("Are you sure you want to clear the form?")){    
+                nameInput.value = "";
+                emailInput.value = "";
+                zip.textContent = zipCodes[countrySelect.value];
+                const radios = document.querySelectorAll('input[name="hobbies"]');
+                radios.forEach(r => r.checked = false);
+                }
+            });
+        </script>
+    </body>
+</html>

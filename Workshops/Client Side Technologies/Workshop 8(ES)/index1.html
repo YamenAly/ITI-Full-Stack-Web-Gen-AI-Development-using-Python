@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <style>
+            body{
+                background-color: gray;
+            }
+            
+            .span, #type{
+                font-weight: bold;
+            }
+
+            form{
+                display: inline;
+            }
+            
+            #addbtn{
+                margin-left: 55px;
+            }
+
+            div{
+                margin-top: 10px;
+                background-color: gray;
+                width: 300px;
+                padding-left: 5px;
+            }
+        </style>
+
+        <span>News Type</span>
+        <form>
+            <input type="radio" name="type" value="Sport" id="sport">Sport
+            <input type="radio" name="type" value="Social" id="social">Social
+            <input type="radio" name="type" value="Politic" id="politic">Politic<br>
+            <input type="text" id="name" placeholder="john doe"> <input type="button" value="Add" id="addbtn" onclick="add();"/><br>
+            <span>Search: </span> <input type="text" name="search" id="search">
+        </form>
+        <div id="mydiv"></div>
+
+        <script>
+            var i = 0;
+            var newsData = [];
+
+            const add = () =>{
+
+                var uservalue = document.getElementById('name').value;
+                var type = document.querySelector('input[name="type"]:checked');
+
+                if(uservalue.trim() === "" || !type)
+                {
+                    alert("Please Enter name and select news type");
+                    return;
+                }
+
+                for (var k = 0; k < uservalue.length; k++) {
+                    var char = uservalue[k];
+
+                    if (char >= "0" && char <= "9") {
+                        alert("Enter text only. No numbers allowed.");
+                        return;
+                    }
+                }     
+
+                newsData.push({name: uservalue, type: type.value});
+
+                render(newsData);
+
+                document.getElementById("name").value = "";
+                type.checked = false;
+            };
+
+            const render = (data) =>{
+                var container = document.getElementById("mydiv");
+                container.innerHTML= "";
+
+                for (var i = 0; i < data.length; i++) {
+                    var createdp = document.createElement("p");
+                    createdp.innerHTML = data[i].name + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + data[i].type;
+                     if (data[i].type === "Sport") {
+                        createdp.style.backgroundColor = "green";
+                    } else if (data[i].type === "Social") {
+                        createdp.style.backgroundColor = "blue";
+                    } else if (data[i].type === "Politic") {
+                        createdp.style.backgroundColor = "red";
+                    }
+                    container.appendChild(createdp);
+
+                }
+            };
+
+            document.getElementById("search").onkeyup = function () {
+                var term = this.value.toLowerCase();
+                var filtered = [];
+
+                for (var i = 0; i < newsData.length; i++) {
+                    if (
+
+                        newsData[i].name.toLowerCase().indexOf(term) !== -1 ||
+                        newsData[i].type.toLowerCase().indexOf(term) !== -1
+                    ) {
+                        filtered.push(newsData[i]);
+                    }
+                }
+                render(filtered);
+            };
+
+        </script>
+    </body>
+</html>
