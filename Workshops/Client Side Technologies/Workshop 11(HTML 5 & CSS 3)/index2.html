@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            html,body{
+                height: 100%;
+            }
+            #desk{
+                height: 100%;
+                background-image: url(./laptop_top.jpg);
+                background-position: center; 
+                background-size: cover;
+                color: white;
+                text-align: center;
+            }
+
+            table{
+                width: 100%;
+                height: 100%;
+                border-collapse: collapse;
+            }
+            #tableone{
+                width: 80%;
+                height: 100%;
+                border-collapse: separate;
+                margin: 20px auto;
+                border-spacing: 30px;
+            }
+            
+            #activities img{
+                width: 100%;
+                height: 300px;
+                object-fit: cover;
+                display: flex;
+            }
+            #activities td{
+                vertical-align: top;
+            }
+            #activities td p {
+                margin-top: 7px auto 0;
+                max-width: 100%;
+            }
+            #registerbtn{
+                font-size: large;
+                
+                width:20%;
+                height: 100%;
+                border: 2px solid white;
+                border-radius: 5px;
+                padding: 12px;
+            }
+            #registerbtn:hover{
+                background-color: #ff604c;
+                cursor: pointer;
+            }
+
+            #tableone .img-card{
+                position: relative;
+                overflow: hidden;
+            }
+
+            #tableone .btn-bar{
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 55px;
+
+                background: #ff6f61;
+                text-align: center;
+                line-height: 55px;
+
+                transform: translateY(100%);
+                transition: transform 0.5s;
+            }
+
+            #tableone .btn-bar img {
+                display: flex;
+                width: 36px;
+                height: 36px;
+
+                margin: 0 8px;
+                border: 2px solid white;
+                border-radius: 50%;
+
+                color: white;
+                text-decoration: none;
+                line-height: 36px;
+                font-weight: bold;
+
+               
+            }
+
+            #tableone .img-card:hover>img {
+                transform: translateY(-15px);
+            }
+
+            #tableone .img-card:hover .btn-bar {
+                transform: translateY(0);
+            }
+
+            #tableone .btn-bar a img {
+                width: 28px;
+                height: 28px;
+                vertical-align: middle;
+            }
+            #tableone .btn-bar a {
+                line-height: 36px;
+                text-align: center;
+            }
+            
+            #tabletwo td p {
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.4s;
+            }
+            #tabletwo td:hover p{
+                opacity: 1;
+                visibility: visible;
+            }
+
+            #tableone .btn-bar img:hover {
+                background-color: white;
+                cursor: pointer;
+            }
+
+            @media all and (orientation: portrait){
+                #activities table{
+                    width: 100%;
+                }
+                #activities table tr{
+                    display: block;
+                }
+                #activities table td{
+                    display: block;
+                    width: 100%;
+                    text-align: center;
+                }
+            }
+        </style>
+            <section id="desk">
+                <table>
+                    <tr>
+                        <td align ="center" valign="middle">
+                            <h2>ITI Tanta</h2><br><br>
+                            <p id="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia minima incidunt omnis soluta. Cupiditate quidem voluptatem unde aut laudantium adipisci omnis quod ullam, vitae quisquam natus repellendus quia. Tempora, rem? Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis atque culpa soluta maiores voluptate debitis est, fugiat consequuntur at. Nobis vitae temporibus excepturi nulla quia expedita a molestiae ratione quo.</p><br><br>
+                            <p id="registerbtn">Register Now</p>
+                        </td>    
+                    </tr>
+                </table>
+            </section>
+
+            <section id="activities">
+                <table id="tableone">
+                    <tr>
+                        <td colspan="3" align ="center" valign="middle">
+                            <h1>Activities</h1><br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><hr color="#dee0fd"> <br> </td>
+                        <td></td>
+                    </tr>
+                    <tr id="activiies">
+                        <td align ="center" valign="middle">
+                            <div class="img-card">
+                                <img src="dome.png" alt="">
+                                <div class="btn-bar">
+                                    <img src="fb.png" alt="">
+                                    <img src="twitter.png" alt="">
+                                    <img src="ig.png" alt="">
+                                    <img src="yt.png" alt="">
+                                </div>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor ut, expedita cum laudantium dolorum nemo delectus repudiandae, harum tenetur itaque esse similique excepturi corporis, recusandae perferendis magni. Eum, aspernatur libero.</p>
+                        </td>
+                        <td align ="center" valign="middle">
+                            <div class="img-card">
+                                <img src="flower.png" alt="">
+                                <div class="btn-bar">
+                                    <img src="fb.png" alt="">
+                                    <img src="twitter.png" alt="">
+                                    <img src="ig.png" alt="">
+                                    <img src="yt.png" alt="">
+                                </div>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur ea at quae, cum, atque dolorum provident cumque consequuntur impedit libero vel modi aut exercitationem enim voluptas optio repudiandae sequi eos.</p>
+                        </td>
+                        <td align ="center" valign="middle">
+                            <div class="img-card">
+                                <img src="mac.png" alt="">
+                                <div class="btn-bar">
+                                    <img src="fb.png" alt="">
+                                    <img src="twitter.png" alt="">
+                                    <img src="ig.png" alt="">
+                                    <img src="yt.png" alt="">
+                                </div>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime quod accusamus qui alias minus quia incidunt aperiam rem voluptate ipsum deleniti esse voluptatem, aliquam quas doloremque. Sit omnis at explicabo!</p>
+                        </td>
+                    </tr>
+                </table>
+                <br><br><br>
+                <table id="tabletwo">
+                    <tr >
+                        <td>
+                            <img src="p4.jpg" alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt corrupti, incidunt accusamus earum perferendis consectetur itaque nemo. Quasi ipsa, quis beatae dignissimos ea odit voluptatem ipsum sequi ab eum praesentium.</p>
+                        </td>
+                        <td>
+                            <img src="p5.jpg" alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ratione suscipit consectetur minima cupiditate molestias eum quia non corrupti praesentium. Blanditiis et laboriosam dolor in perspiciatis minima officia fugit sint autem.</p>
+                        </td>
+                        <td>
+                            <img src="p6.jpg" alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minima, odit dolores? A debitis minima hic nulla repudiandae porro expedita saepe, distinctio similique dolor laudantium. Dolores praesentium labore quod fuga provident!</p>
+                        </td>
+                        <td>
+                            <img src="p4.jpg" alt="">
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sunt corrupti, incidunt accusamus earum perferendis consectetur itaque nemo. Quasi ipsa, quis beatae dignissimos ea odit voluptatem ipsum sequi ab eum praesentium.</p>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+    </body>
+</html>

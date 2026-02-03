@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+
+        main{
+            margin: 20px auto;
+            width: 75%;
+            height: 700px;
+            border: 5px solid #c8cd33;
+            border-radius: 20px;
+            padding: 5px;
+            box-shadow: #36d9af 10 10 70px inset, #36d9af -10 -10 70px inset, #ff90ff 10px 10px 30px;
+            transition: all 1s;
+        }
+
+        main:hover{
+            transform: skew(20deg);
+            box-shadow: #36d9af 10px 10px 20px inset, greenyellow -10px -10px 20px inset, #ff90ff 10px 10px 30px;
+        }
+
+        main:active{
+            transform: scale(0.5);
+            box-shadow: greenyellow 10px 10px 50px inset, greenyellow -10px -10px 50px inset, #ff90ff 10px 10px 30px;
+        }
+
+        section, article{
+            height: 90%;
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+
+        section{
+             width: 60%;
+            border: 4px solid blue;
+            float: right;
+            padding: 1%;
+            text-align: center;
+            overflow: auto;
+            box-shadow: #36d9af 10px 10px 30px inset ,#36d9af -10px -10px 30px inset;
+        }
+        section>div{
+            border: 2px solid blue;
+            width: 20%;
+            height: 20%;
+            display: inline-block;
+            margin: 12px;
+            box-shadow: #ff90ff 3px 3px 5px;
+            transition: all 1s;
+        }
+
+        section>div:hover{
+            box-shadow: greenyellow 3px 3px 5px;
+            transform: scale(1.25);
+            border: 4px double blue;
+        }
+
+        section>div:active{
+            transform: scale(4);
+            box-shadow: #ff90ff 3px 3px 5px;
+            border: none;
+            padding: 0px;
+        }
+
+        article{
+            width: 30%;
+            float: left;
+            padding: 1%;
+            border: 3px solid black;
+            overflow: auto;
+            column-count: 3;
+            column-gap: 30px;
+            column-rule:2px solid red;
+            box-shadow: greenyellow inset 0 0 30px;
+            text-align: center;
+        }
+        article:hover{
+            text-decoration: underline;
+        }
+
+        mark{
+            background-color: red;
+            /* padding: 0 4px; */
+            box-decoration-break: clone;
+        }
+        mark:hover {
+            background: linear-gradient(
+                to bottom,
+                red,
+                #ffb347,
+                yellow
+
+            );
+        }
+        mark:active{
+            background-color: rgb(0, 128, 36);
+        }
+        
+        img{            
+            width: 100%;
+            height: 100%;
+        }
+
+        @media all and (orientation: portrait){
+            main:hover{
+                transform: none;
+                box-shadow: #36d9af 10 10 70px inset, #36d9af -10 -10 70px inset, #ff90ff 10px 10px 30px;
+            }
+            main:active{
+                transform: none;
+                box-shadow: #36d9af 10 10 70px inset, #36d9af -10 -10 70px inset, #ff90ff 10px 10px 30px;
+            }
+            section{
+                width: 50%;
+            }
+            article{
+                width: 30%;
+                border: 4px double #ff90ff;
+                column-count: 1;
+                column-rule: none;
+            }
+            article:hover{
+                text-decoration: none;
+            }
+            section>div{
+                border: 2px solid blue;
+                width: 50%;
+                height: 20%;
+                display: inline-block;
+                margin:15px;
+                box-shadow: lightblue 3px 3px 5px;
+                transform: rotate(30deg);
+                transition: all 1s;
+            }
+            section>div:hover{
+                box-shadow: greenyellow 3px 3px 5px;
+                transform: scale(1.25);
+                border: 4px double blue;
+            }
+            section>div:active{
+                transform:scale(1.5);
+                box-shadow: #ff90ff 3px 3px 10px;
+                border: 2px dashed black;
+                padding: 0px;
+            }
+            mark{
+                background-color: darkblue;
+                color: white;
+            }
+            mark:hover, mark:active{
+                background-color: darkblue;
+            }
+        }
+        
+    </style>
+    <body>
+        <main>
+            <article>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis recusandae reprehenderit reiciendis odio, ex expedita. Dicta ipsam accusantium praesentium, facere numquam, assumenda dolore, aspernatur quo excepturi ad laudantium ipsum odit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga adipisci nisi vero! Provident odit, <mark> empora a nemo adipisci ab unde expedita. Dolorum quia maxime veniam sapiente deserunt aliquid autem aperiam? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore tenetur corrupti itaque labore sed fugiat pariatur non ullam velit rerum tempore fugit ab, facilis consequatur minima laborum obcaecati veritatis officia? Lorem ipsum dolor sit amet</mark> consectetur adipisicing elit. Recusandae tempora aperiam dolores eveniet et assumenda unde inventore officia. Odit provident sunt fugiat? Aliquam corrupti consequatur deleniti ratione, optio quis cum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure quidem soluta dolorum natus fuga facilis eius officiis, magni sunt, unde nihil nisi nesciunt aut accusamus ad laborum similique pariatur nulla. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia nesciunt, aperiam error molestias possimus, cupiditate praesentium saepe impedit accusamus officiis velit quidem distinctio ratione molestiae iure, beatae numquam cum optio?</p>
+            </article>
+            <section>
+                <div><img src="./UP/1.jpg" alt="up1"></div>
+                <div><img src="./UP/2.jpg" alt="up2"></div>
+                <div><img src="./UP/3.jpg" alt="up3"></div>
+                <div><img src="./UP/4.jpg" alt="up4"></div>
+                <div><img src="./UP/5.jpg" alt="up5"></div>
+                <div><img src="./UP/6.jpg" alt="up6"></div>
+                <div><img src="./UP/7.jpg" alt="up7"></div>
+                <div><img src="./UP/8.jpg" alt="up8"></div>
+                <div><img src="./UP/9.jpg" alt="up9"></div>
+                <div><img src="./UP/10.jpg" alt="up10"></div>
+                <div><img src="./UP/11.jpg" alt="up11"></div>
+                <div><img src="./UP/12.jpg" alt="up12"></div>
+                <div><img src="./UP/1.jpg" alt="up1"></div>
+                <div><img src="./UP/2.jpg" alt="up2"></div>
+                <div><img src="./UP/3.jpg" alt="up3"></div>
+                <div><img src="./UP/4.jpg" alt="up4"></div>
+                <div><img src="./UP/5.jpg" alt="up5"></div>
+                <div><img src="./UP/6.jpg" alt="up6"></div>
+                <div><img src="./UP/7.jpg" alt="up7"></div>
+                <div><img src="./UP/8.jpg" alt="up8"></div>
+                <div><img src="./UP/9.jpg" alt="up9"></div>
+                <div><img src="./UP/10.jpg" alt="up10"></div>
+                <div><img src="./UP/11.jpg" alt="up11"></div>
+                <div><img src="./UP/12.jpg" alt="up12"></div>
+                <div><img src="./UP/1.jpg" alt="up1"></div>
+                <div><img src="./UP/2.jpg" alt="up2"></div>
+                <div><img src="./UP/3.jpg" alt="up3"></div>
+                <div><img src="./UP/4.jpg" alt="up4"></div>
+                <div><img src="./UP/5.jpg" alt="up5"></div>
+                <div><img src="./UP/6.jpg" alt="up6"></div>
+                <div><img src="./UP/7.jpg" alt="up7"></div>
+                <div><img src="./UP/8.jpg" alt="up8"></div>
+                <div><img src="./UP/9.jpg" alt="up9"></div>
+                <div><img src="./UP/10.jpg" alt="up10"></div>
+                <div><img src="./UP/11.jpg" alt="up11"></div>
+                <div><img src="./UP/12.jpg" alt="up12"></div>
+            </section>
+        </main>    
+    </body>
+</html>

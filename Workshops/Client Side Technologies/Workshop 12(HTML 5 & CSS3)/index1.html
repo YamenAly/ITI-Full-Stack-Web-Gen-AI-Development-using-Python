@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=i1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                border: 0;
+                box-sizing: border-box;
+            }
+
+            .i1 { grid-area: header; }
+            .i2 { grid-area: menu; }
+            .i3 { grid-area: main; }
+
+            #mainwrapper{
+                display: grid;
+                height: 100vh;
+
+                grid-template-columns: 350px 1fr;
+                grid-template-rows: auto 1fr;
+
+                grid-template-areas:
+                    "menu header"
+                    "menu main";
+            }
+            .i1 {
+                background-color:#cdb881;
+                padding: 10px;
+            }
+            .i1 table{                
+                color: white;
+                border-spacing: 10px;
+            }
+            .i2{
+                background-color: white;
+                margin: 20px 20px 20px 20px;
+                color:#aaaaaa;
+            }
+            #logo img{
+                width: 70%;
+                height: 70%;
+            }
+            .i2 ul{
+                list-style-type: none;
+            }
+            .i2 table img{
+                width: 50px;
+                height: 50px;
+            }
+
+            .i3{
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(3, 1fr);
+                gap: 0px;
+                overflow: hidden;
+            }
+            .i3 img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+            #flickr{
+                display: grid;
+                grid-template-columns: repeat(3, 80px);
+                grid-template-rows: repeat(2, 80px);
+                gap: 5px;
+                overflow: hidden;
+            }
+            #flickr img{
+                width: 80px;
+                height: 80px;
+            }
+
+            .i1 table td:hover{
+                border-radius: 3px;
+                background-color: #b9a874;
+                
+            }
+
+        </style>
+        <section id="mainwrapper">
+            <section class="i1">
+                <table>
+                    <tr>
+                        <td>
+                            <p>All</p>
+                        </td>
+                        <td>
+                            <p>Illustration</p>
+                        </td>
+                        <td>
+                            <p>Motion</p>
+                        </td>
+                        <td>
+                            <p>Photography</p>
+                        </td>
+                        <td>
+                            <p>Print</p>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+            <section class="i2">
+                <div id="logo"><img src="INK.png" alt=""></div>
+                <br><br>
+                <ul>
+                    <li>
+                        <b>Portfolio</b>
+                    </li>
+                    <li>
+                        About Us
+                    </li>
+                    <li>
+                        Blog
+                    </li>
+                    <li>
+                        Buy this theme
+                    </li>
+                </ul>
+                <br><br><br><br><br>
+                <table>
+                    <tr>
+                        <td>
+                            <img src="basketball.png" alt="">
+                        </td>
+                        <td>
+                            <img src="twitter.png" alt="">
+                        </td>
+                        <td>
+                            <img src="vimeo.svg" alt="">
+                        </td>
+                    </tr>
+                </table> <br>
+                <h4>A text widget</h4><br>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus ex suscipit provident magnam voluptatibus. Modi numquam culpa et dolor enim voluptatibus at quibusdam incidunt totam, delectus quae veritatis distinctio omnis?</p><br>
+                <h4>Flickr</h4><br>
+                <section id="flickr">
+                    <img src="1.png"  alt="">
+                    <img src="2.png"  alt="">
+                    <img src="3.png"  alt="">
+                    <img src="4.png"  alt="">
+                    <img src="5.png"  alt="">
+                    <img src="6.png"  alt="">
+                </section>
+            </section>
+            <section class="i3">
+                <img src="1.png"  alt="">
+                <img src="2.png"  alt="">
+                <img src="3.png"  alt="">
+                <img src="4.png"  alt="">
+                <img src="5.png"  alt="">
+                <img src="6.png"  alt="">
+                <img src="7.png"  alt="">
+                <img src="8.png"  alt="">
+                <img src="9.png"  alt="">
+                <img src="10.png" alt="">
+                <img src="11.png" alt="">
+                <img src="12.png" alt="">
+            </section>
+        </section>
+    </body>
+</html>

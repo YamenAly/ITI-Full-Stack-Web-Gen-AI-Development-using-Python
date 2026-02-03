@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <style>
+            *{
+                margin: 0px;
+                padding: 0px;
+                box-sizing: border-box;
+            }
+            html,body{
+                height: 100%;
+            }
+            #desk{
+                height: 100vh;
+                background-image: url(./laptop_top.jpg);
+                background-position: center; 
+                background-size: cover;
+                color: white;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+            }
+
+            #desk .content{
+                max-width: 900px;
+                padding: 20px;
+            }
+
+
+            #registerbtn{
+                display: inline-block;
+                font-size: large;
+                margin-top: 30px;
+                border: 2px solid white;
+                border-radius: 5px;
+                padding: 12px 30px;
+            }
+            #registerbtn:hover{
+                background-color: #ff604c;
+                cursor: pointer;
+            }
+
+
+            #activities{
+                padding: 60px 0;
+            }
+
+            .activities-title{
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .activities-title hr{
+                width: 200px;
+                margin: 15px auto;
+                border: 1px solid #dee0fd;
+            }
+
+            .cards{
+                width: 80%;
+                margin: auto;
+                display: flex;
+                gap: 30px;
+            }
+
+            .card{
+                flex: 1;
+                text-align: center;
+            }
+
+            .card p{
+                margin-top: 10px;
+            }
+
+            .img-card{
+                position: relative;
+                overflow: hidden;
+            }
+
+            .img-card img{
+                width: 100%;
+                height: 300px;
+                object-fit: cover;
+                display: block;
+                transition: transform 0.3s;
+            }
+            
+            .btn-bar{
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 55px;
+
+                background: #ff6f61;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+
+                transform: translateY(100%);
+                transition: transform 0.5s;
+            }
+
+            .btn-bar img {
+                width: 28px;
+                height: 28px;
+                border: 2px solid white;
+                border-radius: 50%;
+                padding: 4px;               
+            }
+
+
+
+            .img-card:hover>img {
+                transform: translateY(-15px);
+            }
+
+            .img-card:hover .btn-bar {
+                transform: translateY(0);
+            }
+
+            .btn-bar img:hover {
+                background-color: white;
+                cursor: pointer;
+            }
+
+            .botRow{
+                width: 90%;
+                margin: 80px auto 0;
+
+                display: flex;
+                gap: 20px;
+            }
+
+            .botRow-item{
+                flex: 1;
+                text-align: center;
+            }
+
+            .botRow-item img{
+                width: 100%;
+                display: block;
+            }
+
+            .botRow p {
+                margin: 10px;
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity 0.4s;
+            }
+            .botRow-item:hover p{
+                opacity: 1;
+                visibility: visible;
+            }
+
+            
+
+            @media all and (orientation: portrait){
+                .cards, .botRow{
+                    flex-direction: column;
+                }
+            }
+        </style>
+            <section id="desk">
+    <div class="content">
+        <h2>ITI Tanta</h2><br>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque consequatur adipisci sapiente atque? Atque, enim obcaecati quam nemo ab aliquid amet architecto provident consequuntur, esse eaque facilis, qui magnam! Ipsum.</p>
+        <p id="registerbtn">Register Now</p>
+    </div>
+</section>
+
+
+<section id="activities">
+    <div class="activities-title">
+        <h1>Activities</h1>
+        <hr>
+    </div>
+
+    <div class="cards">
+        <div class="card">
+            <div class="img-card">
+                <img src="dome.png">
+                <div class="btn-bar">
+                    <img src="fb.png">
+                    <img src="twitter.png">
+                    <img src="ig.png">
+                    <img src="yt.png">
+                </div>
+            </div>
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ipsa totam placeat libero nemo, nam dolore laudantium distinctio temporibus consequuntur provident, facere sit rem fugit reprehenderit accusamus dolorem, est earum labore.</p>
+        </div>
+
+        <div class="card">
+            <div class="img-card">
+                <img src="flower.png">
+                <div class="btn-bar">
+                    <img src="fb.png">
+                    <img src="twitter.png">
+                    <img src="ig.png">
+                    <img src="yt.png">
+                </div>
+            </div>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Deleniti, ipsa dolor odio ad natus nam adipisci porro maiores doloremque esse praesentium totam vel officia mollitia iusto possimus, molestiae omnis quidem!.</p>
+        </div>
+
+        <div class="card">
+            <div class="img-card">
+                <img src="mac.png">
+                <div class="btn-bar">
+                    <img src="fb.png">
+                    <img src="twitter.png">
+                    <img src="ig.png">
+                    <img src="yt.png">
+                </div>
+            </div>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo porro dolore molestiae deleniti quae nostrum placeat quisquam reprehenderit alias? Officia amet natus iste esse facere! Ad tenetur magni quaerat iure!.</p>
+        </div>
+    </div>
+
+    <!-- SECOND ROW -->
+    <div class="botRow">
+        <div class="botRow-item">
+            <img src="p4.jpg">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus nisi delectus cupiditate, praesentium nesciunt tempora at quos fugiat vero itaque. Error dignissimos sint iste quasi molestias ipsa nobis quisquam voluptatem.</p>
+        </div>
+        <div class="botRow-item">
+            <img src="p5.jpg">
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni quod atque aliquam dignissimos, quo repudiandae nesciunt dolor, cumque quisquam alias quam earum reiciendis aperiam esse nobis quos vel ullam obcaecati?</p>
+        </div>
+        <div class="botRow-item">
+            <img src="p6.jpg">
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tempore tempora obcaecati necessitatibus reprehenderit nesciunt quas dignissimos voluptatibus quam amet distinctio sit quibusdam asperiores, delectus excepturi sint, voluptas ipsam at. Suscipit.</p>
+        </div>
+        <div class="botRow-item">
+            <img src="p4.jpg">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis, magni rerum totam aut quis inventore ratione. Impedit obcaecati, neque earum provident delectus nesciunt ullam placeat molestias iusto? Accusantium, laudantium animi!</p>
+        </div>
+    </div>
+
+</section>
+
+    </body>
+</html>

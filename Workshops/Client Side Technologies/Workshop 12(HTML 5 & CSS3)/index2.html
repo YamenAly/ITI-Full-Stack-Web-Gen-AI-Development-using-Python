@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<style>
+    /* declare animation using @keyrames*/                
+          @keyframes sectionAnimation {
+            0% {
+                transform: translate(0, 0);               
+            }
+            25% {
+                transform: translate(1300px, 0);
+                background-color: #92d050;
+                overflow: hidden;           
+            }
+            50% {
+                transform: translate(1300px, 500px);
+                background-color: #00b0f0; 
+                overflow: hidden;
+            }
+            75% {
+                transform: translate(0, 500px);
+                background-color: #ffd966;;
+                overflow: hidden;
+            }
+            100% {
+                transform: translate(0, 0);               
+            }
+        }
+
+    section {
+            
+            width: 300px;
+            height: 200px;
+            border: 2px solid black;
+            background-color: #ed7d31;
+            position: relative;
+            animation-delay:2s;
+    }
+
+    #controlswrapper{
+        text-align: center;
+        
+    }
+
+    button{
+        color: white;
+        background-color: #5b9bd5;
+        border-radius: 0;
+        padding: 10px;
+    }
+
+    .box-hover{
+        display: inline-block;
+        transition: transform 0.3s;
+    }
+
+    .box-hover:hover{
+        transform: scale(1.1);
+    }
+</style>
+<body>
+    <div id="controlswrapper">
+            <button id="startBtn">Start</button>
+            <button id="pauseBtn">Pause</button>
+            <button id="stopBtn">Stop</button>
+    </div><br><br>
+    <div class="box-hover">
+        <section id="box"></section>
+    </div>
+    <script>
+        const box = document.getElementById("box");
+        const startBtn = document.getElementById("startBtn");
+        const pauseBtn = document.getElementById("pauseBtn");
+        const stopBtn = document.getElementById("stopBtn");
+        const wrapper = document.querySelector(".box-hover");
+        
+        startBtn.addEventListener("click", () => {
+            box.style.animationPlayState = "running";
+            box.style.animation = "sectionAnimation 4s linear infinite";
+        });
+
+        pauseBtn.addEventListener("click", () => {
+            box.style.animationPlayState = "paused";
+        });
+
+        stopBtn.addEventListener("click", () => {
+            box.style.animation = "none";       
+            box.offsetHeight;                  
+            box.style.animation = "sectionAnimation 4s linear infinite";
+            box.style.animationPlayState = "paused";
+        });
+
+         wrapper.addEventListener("mouseenter", () => {
+            box.style.animationPlayState = "paused";
+        });
+
+        wrapper.addEventListener("mouseleave", () => {
+            box.style.animationPlayState = "running";
+        });
+    </script>
+</body>
+</html>
