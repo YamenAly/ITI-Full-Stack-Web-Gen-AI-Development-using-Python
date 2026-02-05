@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        font-size: 0px;
+        box-sizing: border-box;
+    }
+
+    main{
+        width: 90%;
+        margin: 30px auto;
+        border: 2px solid black;
+        border-radius: 30px;
+        box-shadow: 10px 10px 10px 20px inset #ff8b3a;
+        padding: 20px;
+    }
+
+    #videos, #player{
+        font-size: 16px;
+        height: 600px;
+        display: inline-block;
+        vertical-align: top;
+        box-shadow: 10px 10px 10px 20px inset #ffdda0;
+        border: 2px solid black;
+        border-radius: 20px;
+        padding: 15px;
+    }
+
+    #videos{
+        width: 11%;
+        margin-right: 20px;
+    }
+    #videos:hover{
+        background-color: #ffa500;
+    }
+
+    .video-btn{
+        width: 100%;
+        font-size: 12px;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 3px solid #6190e5;
+        border-radius: 10px;
+        background: white;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.3s;
+    }
+
+    .video-btn:hover{
+        animation: spinOnce 0.6s linear;
+    }
+
+    .video-btn.active{
+        background: #4ba6fe;
+        color: white;
+    }
+
+    #player{
+        width: 87%;
+        text-align: center;
+    }
+
+    .video-wrapper{
+        width: 70%;
+        height: 100%;
+        margin: auto;
+        border-radius: 10px;
+        transition: width 0.4s ease;
+    }
+
+    video{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        border-radius: 40px;
+    }
+
+    .video-wrapper:hover{
+        width: 100%;
+        border-radius: 60px;
+    }
+
+
+    /* ===== Animation ===== */
+    @keyframes spinOnce{
+        from{ transform: rotate(0deg); }
+        to{ transform: rotate(360deg); }
+    }
+</style>
+<body>
+    <main>
+        <section id="videos">
+            <button class="video-btn" data-src="S03/The Bear S03E01 Tomorrow.mkv">Video 1</button>
+            <button class="video-btn" data-src="S03/The Bear S03E02 Next.mkv">Video 2</button>
+            <button class="video-btn" data-src="S03/The Bear S03E03 Doors.mkv">Video 3</button>
+            <button class="video-btn" data-src="S03/The Bear S03E04 Violet.mkv">Video 4</button>
+            <button class="video-btn" data-src="S03/The Bear S03E05 Children.mkv">Video 5</button>
+            <button class="video-btn" data-src="S03/The Bear S03E06 Napkins.mkv">Video 6</button>
+            <button class="video-btn" data-src="S03/The Bear S03E07 Legacy.mkv">Video 7</button>
+            <button class="video-btn" data-src="S03/The Bear S03E09 Apologies.mkv">Video 8</button>
+            <button class="video-btn" data-src="S03/The Bear S03E09 Apologies.mkv">Video 9</button>
+            <button class="video-btn" data-src="S03/The Bear S03E10 Forever.mkv">Video 10</button>
+        </section>
+        <section id="player">
+            <div class="video-wrapper">
+                <video id="videoPlayer"></video>
+            </div>
+        </section>
+    </main>
+    <script>
+        const buttons = document.querySelectorAll(".video-btn");
+        const player = document.getElementById("videoPlayer");
+
+        buttons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                buttons.forEach(b => b.classList.remove("active"));
+
+                btn.classList.add("active");
+
+                player.src = btn.dataset.src;
+                player.controls = false;
+                player.play();
+            });
+        });
+
+        player.addEventListener("dblclick", ()=>{
+            if (player.requestFullscreen){
+                player.requestFullscreen();
+            }
+            player.controls = true;
+        });
+
+        document.addEventListener("fullscreenchange", () =>{
+            if(!document.fullscreenElement){
+                player.controls = false;
+            }
+        });
+    </script>
+</body>
+</html>
