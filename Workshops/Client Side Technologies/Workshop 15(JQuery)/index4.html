@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="jq-3-7-1.js"></script>
+    <script>
+        $(function(){
+            $("section").css("width","80%")
+                        .css("height","700px")
+                        .css("position", "relative")
+                        .css("margin", "40px auto");
+            $("input").css("height", "30px")
+                      .css("width", "100px")
+                      .css("border-radius", "0")
+                      .css("background-color", "#5c9ad5");
+            $("#controls").css("display","flex")
+                          .css("justify-content","center")
+                          .css("gap", "20px");
+            $(" section div").css("width", "150px")
+                             .css("height", "100px")
+                             .css("background-color","#ec7d30")
+                             .css("position", "absolute")
+                             .css("left","0")
+                             .css("top","0");
+            
+            $("input[value='Move Left']").click(function () {
+                $("section div").animate({ left: "0px" }, 400);
+            });
+            
+            $("input[value='Move Right']").click(function () {
+                let maxRight = $("section").width() - $("section div").width();
+                $("section div").animate({ left: maxRight }, 400);
+            });
+
+            let isRunning = false;
+            
+            function loopAnimation(){
+
+                    if(!isRunning) return;
+
+                    let box = $("section div");
+                    let maxRight = $("section").width() - box.width();
+                    let maxBottom = $("section").height() - box.height();
+
+                    box
+                    .animate({ left: maxRight }, 400)
+                    .animate({ top: maxBottom }, 400)
+                    .animate({ left: 0 }, 400)
+                    .animate({ top: 0 }, 400, loopAnimation);
+                };
+
+            $("input[value='Move Around']").click(function () {
+                
+                let box = $("section div");
+
+                if (isRunning) {
+                    isRunning = false;
+                    box.stop(true);
+                    box.css({ left: 0, top: 0 });
+                } else {
+                    isRunning = true;
+                    loopAnimation();
+                }
+            });
+        });
+</script>
+</head>
+<body>
+    <div id="controls">
+        <input type="button" value="Move Left">
+        <input type="button" value="Move Right">
+        <input type="button" value="Move Around">
+    </div>
+    <section>
+        <div></div>
+    </section>
+</body>
+</html>

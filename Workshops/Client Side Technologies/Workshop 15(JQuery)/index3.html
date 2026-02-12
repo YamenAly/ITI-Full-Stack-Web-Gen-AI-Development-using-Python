@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="jq-3-7-1.js"></script>
+    <script>
+        $(function(){
+            $("body").css("background-color", "black");
+            $("div").css("width", "500px")
+                    .css("height", "500px");
+            $("section")
+                    .css("width", "75px")
+                    .css("height", "75px")
+                    .css("border","1px solid black")
+                    .css("background-color","purple");
+            let isRunning = false;
+
+            function loopAnimation() {
+                if (!isRunning) return;
+
+                $("section")
+                    .animate({ width: "150px", height: "150px" })
+                    .animate({ width: "250px", height: "100px" })
+                    .animate({ width: "75px", height: "75px" }, loopAnimation);
+            }
+
+            $(":input:first").click(function () {
+                if (!isRunning) {
+                    isRunning = true;
+                    loopAnimation();
+                }
+            });
+
+            $(":input:last").click(function () {
+                isRunning = false;
+                $("section").stop();
+            });
+        });
+</script>
+</head>
+<body>
+    <input type="button" value="Start Animation">
+    <input type="button" value="Stop Animation">
+    <div>
+        <section></section>
+    </div>
+</body>
+</html>

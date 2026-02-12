@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="jq-3-7-1.js"></script>
+    <script>
+        $(function(){
+            $("body div").css("width", "100px")
+                         .css("height", "100px")
+                         .css("border", "1px solid black")
+                         .css("margin", "5px")
+                         .css("display", "inline-block");
+            $("body p").css("display", "inline-block")
+                       .css("line-height","100px")
+                       .css("vertical-align","middle");
+            $("body div:first").css("background-color", "green");
+            $("body div:eq(1)").css("background-color", "blue");
+            $("body div:eq(2)").css("background-color", "darkblue");
+            $("body div:last").css("background-color", "red");
+            $("body div:first").hover(function(){
+                $("body span").css("color","green")
+                .html($("body div:first").css("background-color"));
+            });
+            $("body div:eq(1)").hover(function(){
+                $("body span").css("color","blue")
+                .html($("body div:eq(1)").css("background-color"));
+            });
+            $("body div:eq(2)").hover(function(){
+                $("body span").css("color","darkblue")
+                .html($("body div:eq(2)").css("background-color"));
+            });
+            $("body div:last").hover(function(){
+                $("body span").css("color","red")
+                .html($("body div:last").css("background-color"));
+            });
+        })
+    </script>
+</head>
+<body>
+    <div></div><div></div><div></div><div></div><p>This div is <span></span></p>
+</body>
+</html>

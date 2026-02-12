@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="jq-3-7-1.js"></script>
+    <script>
+        $(function(){
+            $("body div").css("width", "100px")
+                         .css("height", "100px")
+                         .css("border", "1px solid black")
+                         .css("margin", "5px")
+                         .css("display", "inline-block")
+                         .css("color", "white");
+            $("body p").css("display", "inline-block")
+            $("body div:first").css("background-color", "green");
+            $("body div:eq(1)").css("background-color", "blue");
+            $("body div:eq(2)").css("background-color", "darkblue");
+            $("body div:last").css("background-color", "red");
+            $("body div:first").hover(function(){
+                $("body p").html("This div has the following styles:<br>"
+                + "width: " + $("body div:first").css("width") +"<br>"
+                + "height: " + $("body div:first").css("height") +"<br>"
+                + "border: " + $("body div:first").css("border") +"<br>"
+                + "margin: " + $("body div:first").css("margin") +"<br>"
+                + "display: " + $("body div:first").css("display") +"<br>"
+                + "text-color: " + $("body div:first").css("color") +"<br>"
+                + "background color: " + $("body div:first").css("background-color"));
+            });
+            $("body div:eq(1)").hover(function(){
+                $("body p").html("This div has the following styles:<br>"
+                + "width: " + $("body div:eq(1)").css("width") +"<br>"
+                + "height: " + $("body div:eq(1)").css("height") +"<br>"
+                + "border: " + $("body div:eq(1)").css("border") +"<br>"
+                + "margin: " + $("body div:eq(1)").css("margin") +"<br>"
+                + "display: " + $("body div:eq(1)").css("display") +"<br>"
+                + "text-color: " + $("body div:eq(1)").css("color") +"<br>"
+                + "background color: " + $("body div:eq(1)").css("background-color"));
+            });
+            $("body div:eq(2)").hover(function(){
+                $("body p").html("This div has the following styles:<br>"
+                + "width: " + $("body div:eq(2)").css("width") +"<br>"
+                + "height: " + $("body div:eq(2)").css("height") +"<br>"
+                + "border: " + $("body div:eq(2)").css("border") +"<br>"
+                + "margin: " + $("body div:eq(2)").css("margin") +"<br>"
+                + "display: " + $("body div:eq(2)").css("display") +"<br>"
+                + "text-color: " + $("body div:eq(2)").css("color") +"<br>"
+                + "background color: " + $("body div:eq(2)").css("background-color"));
+            });
+            $("body div:last").hover(function(){
+                $("body p").html("This div has the following styles:<br>"
+                + "width: " + $("body div:last").css("width") +"<br>"
+                + "height: " + $("body div:last").css("height") +"<br>"
+                + "border: " + $("body div:last").css("border") +"<br>"
+                + "margin: " + $("body div:last").css("margin") +"<br>"
+                + "display: " + $("body div:last").css("display") +"<br>"
+                + "text-color: " + $("body div:last").css("color") +"<br>"
+                + "background color: " + $("body div:last").css("background-color"));
+            });
+        })
+    </script>
+</head>
+<body>
+    <section><p></p></section>
+    <div>1</div><div>2</div><div>3</div><div>4</div>
+</body>
+</html>
