@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="jq-3-7-1.js"></script>
+    <script>     
+        $(function () { 
+            $("main div").addClass("circle")
+                           .css("width", "100px")
+                           .css("height", "100px")
+                           .css("border","1px solid gray")
+                           .css("border-radius", "50%")
+                           .css("display", "inline-block")
+                           .css("margin", "5px");
+            $("main div:first").css("background-color", "red");
+            $("main div:eq(1)").css("background-color", "yellow");
+            $("main div:last").css("background-color", "blue");
+            
+            $(document).on("mouseenter", ".circle:not(.clone)", function(){
+                let newCircle = $(this).clone();
+                newCircle.addClass("clone");
+                $("main").append(newCircle);
+            });
+
+            $(document).on("click", ".circle.clone", function(){
+                let newCircle = $(this).clone();
+                $("main").append(newCircle);
+            });
+        });
+    </script>
+    
+</head>
+<body>
+    <main><div></div><div></div><div></div></main>
+</body>
+</html>

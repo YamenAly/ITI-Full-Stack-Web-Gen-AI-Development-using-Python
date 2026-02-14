@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+
+main{
+    width: 95%;
+    margin: 40px auto;
+    padding: 30px;
+    background: yellow;
+    border: 2px solid black;
+    border-radius: 40px 0 40px 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+
+.wrapper{
+    text-align: center;
+}
+
+
+.panel{
+    display: inline-block;
+    width: 45%;
+    height: 180px;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 25px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
+    vertical-align: top;
+}
+
+
+.addition{
+    background: linear-gradient(to bottom, #ff9a6b, #f16c3c);
+}
+
+
+.multiplication{
+    background: linear-gradient(to bottom, #9cff2f, #4cd000);
+}
+
+
+.panel h2{
+    margin-bottom: 25px;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+
+.panel input{
+    width: 80px;
+    height: 35px;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #999;
+    margin: 0 5px;
+}
+
+
+.result{
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<main>
+    <div class="wrapper">
+
+        
+        <div class="panel addition">
+            <h2>ADDITION</h2>
+            <input type="number" id="add1" value="2">
+            +
+            <input type="number" id="add2" value="5">
+            =
+            <span class="result" id="addResult">7</span>
+        </div>
+
+       
+        <div class="panel multiplication">
+            <h2>MULTIPLICATION</h2>
+            <input type="number" id="mul1" value="0">
+            ×
+            <input type="number" id="mul2" value="0">
+            =
+            <span class="result" id="mulResult">0</span>
+        </div>
+
+    </div>
+</main>
+
+<script>
+const add1 = document.getElementById("add1");
+const add2 = document.getElementById("add2");
+const addResult = document.getElementById("addResult");
+
+const mul1 = document.getElementById("mul1");
+const mul2 = document.getElementById("mul2");
+const mulResult = document.getElementById("mulResult");
+
+function updateAddition(){
+    addResult.textContent = Number(add1.value) + Number(add2.value);
+}
+
+function updateMultiplication(){
+    mulResult.textContent = Number(mul1.value) * Number(mul2.value);
+}
+
+add1.addEventListener("input", updateAddition);
+add2.addEventListener("input", updateAddition);
+
+mul1.addEventListener("input", updateMultiplication);
+mul2.addEventListener("input", updateMultiplication);
+</script>
+
+</body>
+</html>

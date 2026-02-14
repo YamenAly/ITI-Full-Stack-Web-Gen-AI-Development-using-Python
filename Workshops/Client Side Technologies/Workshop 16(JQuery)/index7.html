@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<script src="jq-3-7-1.js"></script>
+<script>
+
+$.fn.extend({
+
+    listStyleType: function (style) {
+
+        $(this).css({
+            "list-style-type": style
+        });
+
+        return $(this);
+    },
+
+    colorifyLiStartWithLetter: function (letter, color) {
+
+        return $(this).each(function () {
+
+            $(this).find("li").each(function () {
+
+                let text = $(this).text().trim().toLowerCase();
+                let firstLetter = letter.toLowerCase();
+
+                if (text.startsWith(firstLetter)) {
+                    $(this).css("color", color);
+                }
+
+            });
+
+        });
+    }
+
+});
+
+$(function () {
+
+    function applyListStyle() {
+        $("ul").listStyleType("georgian")
+               .colorifyLiStartWithLetter("m", "blue");
+    }
+
+    applyListStyle();
+
+    $("input:last").click(function () {
+
+        let userinput = $("input:first").val();
+
+        if (userinput.trim() == "") {
+            return;
+        }
+
+        $("ul").append("<li>" + userinput + "</li>");
+
+        $("input:first").val("");
+
+        applyListStyle();
+
+    });
+
+});
+
+</script>
+</head>
+<body>
+
+<div class="container">
+
+    <ul></ul>
+
+    <input type="text" placeholder="write here ">
+    <input type="button" value="add">
+
+</div>
+
+</body>
+</html>

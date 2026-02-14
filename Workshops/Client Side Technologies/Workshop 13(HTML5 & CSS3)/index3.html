@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    main{
+        width: 1460px;
+        height: 700px;
+        margin: 30px auto;
+        border: 2px solid black;
+        border-radius: 30px;
+        box-shadow: 10px 10px 10px 30px inset #ff8b3a;
+        padding: 20px;
+    }
+    #buttons, #output{
+        border: 2px solid black;
+        margin-left: auto;
+        margin-right: auto;
+        display:block;
+        width:1400px;
+        border-radius: 10px;
+        text-align: center;
+    }
+    #buttons{
+        margin-bottom: 20px;
+        height: 100px;
+    }
+    #output{
+        height: 500px;
+    }
+
+    #buttons button{
+        display: inline;
+        border:2px solid black;
+        border-radius: 5px;
+        color: white;
+        background: linear-gradient(
+            to bottom,
+            rgb(0, 225, 255),
+            blue
+            );
+        width: 300px;
+        height: 50px;
+        margin: 20px auto;
+        transition: transform 0.3s;
+    }
+
+    #buttons button:hover{
+        transform: skew(20deg);
+    }
+    
+
+    .info-panel{
+        width: 80%;
+        margin: 40px auto;
+        padding: 15px;
+        border-radius: 25px;
+        background-color: #a2ef3c;
+        box-shadow:  10px 10px 10px 15px inset #537b9a, -10px -10px 10px 15px inset #537b9a;
+        font-family: Arial, sans-serif;
+    }
+
+    .info-row{
+        margin-bottom: 10px;
+    }
+
+    .info-label{
+        font-weight: bold;
+        padding: 4px 10px;
+        border-radius: 10px;
+        font-size: 14px;
+    }
+
+    .info-value{
+        background: #cfefff;
+        padding: 6px 10px;
+        border-radius: 6px;
+        margin-top: 4px;
+        font-size: 14px;
+    }
+
+
+</style>
+<body>
+    <main>
+        <section id="buttons">
+            <button id="displayMap"><b>Display Map</b></button>
+            <button id="detailedInfo"><b>Detailed Information</b></button>
+        </section>
+        <section id="output">
+            
+        </section>
+    </main>
+</body>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB90FxtYG_ybAYXGkz0ybkmkboE2nEbezI"></script>
+
+<script>
+    let lastPosition = null;
+
+    const output = document.getElementById("output");
+
+    document.getElementById("displayMap").addEventListener("click", () => {
+        getLocation(showMap);
+    });
+
+    document.getElementById("detailedInfo").addEventListener("click", () => {
+        if (!lastPosition) {
+            output.innerHTML = "<p>Please get location first.</p>";
+            return;
+        }
+        showDetails(lastPosition);
+    });
+
+    function getLocation(callback) {
+        if (!navigator.geolocation) {
+            output.innerHTML = "<p>Geolocation not supported.</p>";
+            return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+            position => {
+                lastPosition = position;
+                callback(position);
+            },
+            errorHandler,
+            { enableHighAccuracy: true }
+        );
+    }
+
+    function showMap(position) {
+        output.innerHTML = `<div id="mymap" style="width:100%; height:100%;"></div>`;
+
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        const location = new google.maps.LatLng(lat, lon);
+
+        const map = new google.maps.Map(document.getElementById("mymap"), {
+            center: location,
+            zoom: 15
+        });
+
+        new google.maps.Marker({
+            position: location,
+            map: map
+        });
+    }
+
+    function showDetails(position) {
+        const { latitude, longitude, accuracy } = position.coords;
+        const time = new Date(position.timestamp).toString();
+
+        output.innerHTML = `
+            <div class="info-panel">
+                <div class="info-row">
+                    <div class="info-label">Latitude (degree)</div>
+                    <div class="info-value">${latitude}</div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-label">Longitude (degree)</div>
+                    <div class="info-value">${longitude}</div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-label">Accuracy (m)</div>
+                    <div class="info-value">${accuracy}</div>
+                </div>
+
+                <div class="info-row">
+                    <div class="info-label">TimeStamp (Current Time and Date)</div>
+                    <div class="info-value">${time}</div>
+                </div>
+            </div>
+        `;
+    }
+
+    function errorHandler(err) {
+        output.innerHTML = `<p>Error: ${err.message}</p>`;
+    }
+</script>
+</html>

@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Accordion</title>
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.2/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <script src="https://code.jquery.com/ui/1.14.2/jquery-ui.js"></script>
+
+  <script>
+    $(function () {
+
+      $.getJSON("https://jsonplaceholder.typicode.com/posts", function (data) {
+
+        let users = {};
+
+        data.forEach(post => {
+            if (!users[post.userId]) {
+            users[post.userId] = [];
+            }
+            users[post.userId].push(post);
+        });
+
+        let html = "";
+
+        Object.keys(users).forEach(userId => {
+            html += `<h3>User ${userId}</h3><div>`;
+
+            users[userId].slice(0, 3).forEach(post => {
+            html += `
+                <h4>${post.title}</h4>
+                <p>${post.body}</p>
+            `;
+            });
+
+            html += `</div>`;
+        });
+
+        $("#accordion").html(html).accordion({ heightStyle: "content" });
+        });
+
+
+    });
+  </script>
+</head>
+
+<body>
+
+<div id="accordion"></div>
+
+</body>
+</html>

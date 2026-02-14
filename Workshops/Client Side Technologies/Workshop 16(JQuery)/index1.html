@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="jq-3-7-1.js"></script>
+    <script>
+        
+        $(function () {
+            $(":text:first").keyup(function () {
+
+                let uservalue = $(this).val().toUpperCase();
+
+                $("table tr").each(function (index) {
+
+                    if (index === 0) return;
+
+                    let firstName = $(this).find("td:first").text().toUpperCase();
+
+                    if (firstName.indexOf(uservalue) === -1) {
+                        $(this).hide(500);
+                    } else {
+                        $(this).show(500);
+                    }
+                });
+            });
+
+            $(":text:eq(1)").keyup(function () {
+
+                let uservalue = $(this).val().toUpperCase();
+
+                $("table tr").each(function (index) {
+
+                    if (index === 0) return;
+
+                    let lastName = $(this).find("td:last").text().toUpperCase();
+
+                    if (lastName.indexOf(uservalue) === -1) {
+                        $(this).hide(500);
+                    } else {
+                        $(this).show(500);
+                    }
+                });
+            });
+
+            $(":text:last").keyup(function () {
+
+                let uservalue = $(this).val().toUpperCase();
+
+                $("table tr").each(function (index) {
+
+                    if (index === 0) return;
+
+                    let Name = $(this).find("td").text().toUpperCase();
+
+                    if (Name.indexOf(uservalue) === -1) {
+                        $(this).hide(500);
+                    } else {
+                        $(this).show(500);
+                    }
+                });
+            });
+        });
+
+
+    </script>
+</head>
+<body>
+    <input type="text" name="FirstName" id="" placeholder="Filter using First Name">
+    <input type="text" name="LastName" id="" placeholder="Filter using Last Name">
+    <input type="text" name="Any" id="" placeholder="Filter using any">
+    <table>
+        <tr>
+            <th>FirstName</th> <th>LastName</th>
+        </tr>
+        <tr>
+            <td>Mohamed</td> <td>X</td>
+        </tr>
+        <tr>
+            <td>Khaled</td> <td>Y</td>
+        </tr>
+        <tr>
+            <td>Ibraheem</td> <td>Z</td>
+        </tr>
+        <tr>
+            <td>Abdullah</td> <td>ABC</td>
+        </tr>
+    </table>
+</body>
+</html>

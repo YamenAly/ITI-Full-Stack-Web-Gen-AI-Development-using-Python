@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        main{
+            width: 1460px;
+            height: 300px;
+            margin: 30px auto;
+            border: 2px solid black;
+            border-radius: 30px;
+            box-shadow: 10px 10px 10px 50px inset #ff8b3a;
+            padding: 20px;
+            
+        }
+        #pictures, #draggedpicture{
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            width: 1400px;
+            height: 120px;
+            border: 2px solid black;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 5px 5px 10px 20px inset #ffdda0;
+        }
+        #pictures{
+            margin-bottom: 20px;
+            
+        }
+        #draggedpicture{
+            background-color:  #8afccc;
+        }
+        img{
+            display: inline;
+            width: 100px;
+            height: 100px;
+            margin: 5px;
+            border: 3px solid #00dada;
+        }
+
+        #emptyText{
+            font-size: 32px;
+            font-weight: bold;
+            color: #000;
+            line-height: 120px;
+            display: none;
+        }
+
+        #pictures img:hover{
+            animation: spinScale 0.6s linear forwards;
+        }
+        @keyframes spinScale{
+            from{
+                transform: rotate(0deg);
+                scale: 1; 
+            }
+            to{
+                transform: rotate(360deg); 
+                scale: 2;
+            }
+    }
+
+        
+    </style>
+    <main>
+        <section id="pictures">
+            <img src="UP/1.jpg" />
+            <img src="UP/2.jpg" />
+            <img src="UP/3.jpg" />
+            <img src="UP/4.jpg" />
+            <img src="UP/5.jpg" />
+            <img src="UP/6.jpg" />
+            <img src="UP/7.jpg" />
+            <img src="UP/8.jpg" />
+            <img src="UP/9.jpg" />
+            <img src="UP/10.jpg" />
+            <img src="UP/11.jpg" />
+            <img src="UP/12.jpg" />
+            <p id="emptyText">EMPTY!</p>
+        </section>
+        <section id="draggedpicture">
+            
+        </section>
+    </main>
+</body>
+<script>
+    window.addEventListener('load', function () {
+            var allimgs = this.document.images;
+            for (var i = 0; i < allimgs.length; i++) {
+                allimgs[i].addEventListener('dragstart', startdrag);
+                allimgs[i].addEventListener('dragend', enddrag);
+                checkIfEmpty();
+            }
+            draggedpicture = this.document.getElementById('draggedpicture');
+            draggedpicture.addEventListener('drop', dropped);
+            draggedpicture.addEventListener('dragenter', enterdrag);
+            draggedpicture.addEventListener('dragover', overdrag);
+
+            pictures = this.document.getElementById('pictures');
+            pictures.addEventListener('dragleave', leavedrag);
+
+
+        });
+        function startdrag(e) {
+            e.dataTransfer.setData("myimg", e.target.outerHTML);
+        }
+        function enddrag(e) {
+            e.preventDefault();
+            e.target.style.display = "none";
+        }
+        function dropped(e) {
+            e.preventDefault();
+            draggedpicture.innerHTML+=e.dataTransfer.getData("myimg");
+        }
+        function overdrag(e) {
+            e.preventDefault();
+        }
+        function leavedrag(e) {
+            e.preventDefault();
+        }
+        function enterdrag(e) {
+            e.preventDefault();
+        }
+
+        function checkIfEmpty(){
+            const pictures = document.getElementById("pictures");
+            const imgs = pictures.querySelectorAll("img");
+            const emptyText = document.getElementById("emptyText");
+
+            if(imgs.length === 0){
+                emptyText.style.display = "block";
+            } else {
+                emptyText.style.display = "none";
+            }
+        }
+        function enddrag(e) {
+            e.preventDefault();
+            e.target.remove();
+            checkIfEmpty();
+        }
+</script>
+</html>

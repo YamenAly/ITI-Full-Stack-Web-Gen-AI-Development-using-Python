@@ -1,0 +1,259 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script src="jq-3-7-1.js"></script>
+<html>
+    <body>
+        <style>
+            body{
+                background-color: gray;
+            }
+            
+            .span, #type{
+                font-weight: bold;
+            }
+
+            form{
+                display: inline;
+            }
+            
+            #addbtn{
+                margin-left: 55px;
+            }
+
+            div{
+                margin-top: 10px;
+                background-color: gray;
+                width: 300px;
+                padding-left: 5px;
+            }
+        </style>
+
+        <span>News Type</span>
+        <form>
+            <input type="radio" name="type" value="Sport" id="sport">Sport
+            <input type="radio" name="type" value="Social" id="social">Social
+            <input type="radio" name="type" value="Politic" id="politic">Politic<br>
+            <input type="text" id="name" placeholder="john doe"> <input type="button" value="Add" id="addbtn" onclick="add();"/><br>
+            <span>Search: </span> <input type="text" name="search" id="search">
+        </form>
+        <div id="mydiv"></div>
+
+        <script>
+            var i = 0;
+            var newsData = [];
+
+            function add()
+            {
+                var uservalue = document.getElementById('name').value;
+                var type = document.querySelector('input[name="type"]:checked');
+
+                if(uservalue.trim() === "" || !type)
+                {
+                    alert("Please Enter name and select news type");
+                    return;
+                }
+
+                for (var k = 0; k < uservalue.length; k++) {
+                    var char = uservalue[i][k];
+
+                    if (char >= "0" && char <= "9") {
+                        alert("Enter text only. No numbers allowed.");
+                        return;
+                    }
+                }     
+
+                newsData.push({name: uservalue, type: type.value});
+
+                render(newsData);
+
+                document.getElementById("name").value = "";
+                type.checked = false;
+            }
+
+            function render(data){
+                var container = document.getElementById("mydiv");
+                container.innerHTML= "";
+
+                for (var i = 0; i < data.length; i++) {
+                    var createdp = document.createElement("p");
+                    createdp.innerHTML = data[i].name + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + data[i].type;
+                     if (data[i].type === "Sport") {
+                        createdp.style.backgroundColor = "green";
+                    } else if (data[i].type === "Social") {
+                        createdp.style.backgroundColor = "blue";
+                    } else if (data[i].type === "Politic") {
+                        createdp.style.backgroundColor = "red";
+                    }
+                    container.appendChild(createdp);
+
+                }
+            }
+
+            document.getElementById("search").onkeyup = function () {
+                var term = this.value.toLowerCase();
+                var filtered = [];
+
+                for (var i = 0; i < newsData.length; i++) {
+                    if (
+
+                        newsData[i].name.toLowerCase().indexOf(term) !== -1 ||
+                        newsData[i].type.toLowerCase().indexOf(term) !== -1
+                    ) {
+                        filtered.push(newsData[i]);
+                    }
+                }
+                render(filtered);
+            };
+
+        </script>
+    </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+
+<script src="jq-3-7-1.js"></script>
+
+<style>
+body{
+    background-color: gray;
+}
+
+form{
+    display:inline;
+}
+
+#addbtn{
+    margin-left:55px;
+}
+
+ttable{
+    margin-top:10px;
+    width:300px;
+    border-collapse: collapse;
+}
+
+th, td{
+    padding:5px;
+    border:1px solid white;
+}
+
+th{
+    background-color:#444;
+    color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<span>News Type</span>
+
+<form>
+    <input type="radio" name="type" value="Sport">Sport
+    <input type="radio" name="type" value="Social">Social
+    <input type="radio" name="type" value="Politic">Politic<br>
+
+    <input type="text" id="name" placeholder="john doe">
+    <input type="button" value="Add" id="addbtn"><br>
+
+    <span>Search:</span>
+    <input type="text" id="search">
+</form>
+
+<table id="mytable">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Type</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+<script>
+
+let newsData = [];
+
+
+$("#addbtn").on("click", function(){
+
+    let uservalue = $("#name").val();
+    let type = $('input[name="type"]:checked').val();
+
+    if(uservalue.trim()==="" || !type){
+        alert("Please Enter name and select news type");
+        return;
+    }
+
+    for(let k=0; k<uservalue.length; k++){
+        let char = uservalue[k];
+        if(char >= "0" && char <= "9"){
+            alert("Enter text only. No numbers allowed.");
+            return;
+        }
+    }
+
+    newsData.push({name: uservalue, type: type});
+
+    render(newsData);
+
+    $("#name").val("");
+    $('input[name="type"]').prop("checked", false);
+
+});
+
+
+
+function render(data){
+
+    let tbody = $("#mytable tbody");
+    tbody.empty();
+
+    $.each(data, function(i,item){
+
+        let color="";
+
+        if(item.type==="Sport") color="#6dce6f";
+        else if(item.type==="Social") color="#6da9ce";
+        else if(item.type==="Politic") color="#ce6d6d";
+
+        let row = $(`
+            <tr style="background-color:${color}">
+                <td>${item.name}</td>
+                <td>${item.type}</td>
+            </tr>
+        `);
+
+        tbody.append(row);
+    });
+}
+
+
+
+$("#search").on("keyup", function(){
+
+    let term = $(this).val().toLowerCase();
+
+    let filtered = newsData.filter(item =>
+        item.name.toLowerCase().includes(term) ||
+        item.type.toLowerCase().includes(term)
+    );
+
+    render(filtered);
+
+});
+
+</script>
+
+</body>
+</html>

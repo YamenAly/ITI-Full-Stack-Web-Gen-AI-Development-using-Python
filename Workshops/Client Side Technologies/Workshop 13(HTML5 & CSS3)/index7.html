@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        canvas {
+            display: block;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="myCanvas"></canvas>
+
+<script>
+    const canvas = document.getElementById('myCanvas');
+    const context = canvas.getContext('2d');
+    
+    
+    let isDrawing = false;
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    
+    function draw(e) {
+        if (!isDrawing) return; 
+
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        
+        const size = 30; 
+        context.fillStyle = "red"; 
+        context.fillRect(x - size / 2, y - size / 2, size, size);
+    }
+
+    
+    canvas.addEventListener('mousedown', (e) => {
+        isDrawing = true;
+        draw(e); 
+    });
+
+    
+    canvas.addEventListener('mousemove', draw);
+
+    
+    window.addEventListener('mouseup', () => isDrawing = false);
+
+</script>
+
+</body>
+</html>

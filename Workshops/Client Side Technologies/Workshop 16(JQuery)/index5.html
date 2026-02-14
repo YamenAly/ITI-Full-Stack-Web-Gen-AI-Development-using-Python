@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+
+<script src="jq-3-7-1.js"></script>
+
+<style>
+
+body{
+    font-family:Arial;
+    padding:20px;
+}
+
+.topBtns{
+    margin-bottom:15px;
+}
+
+#display{
+    background:lightgray;
+    padding:15px;
+    min-height:200px;
+    white-space:pre-wrap;
+}
+
+</style>
+</head>
+
+<body>
+
+<script>
+
+$(function(){
+
+    $("#loadJSON").on("click", function(){
+
+        $.getJSON("https://jsonplaceholder.typicode.com/posts", function(data){
+
+            let output = "";
+
+            $.each(data.slice(0,5), function(i,item){
+                output += "ID: "+item.id+"\n";
+                output += "Title: "+item.title+"\n";
+                output += "Body: "+item.body+"\n\n";
+            });
+
+            $("#display").text(output);
+
+        });
+
+    });
+
+
+    // ✅ Load XML
+    $("#loadXML").on("click", function(){
+
+        $.ajax({
+            url:"simple.xml",
+            dataType:"xml",
+            success:function(xml){
+
+                let output="";
+
+                $(xml).find("food").each(function(){
+
+                    let name=$(this).find("name").text();
+                    let price=$(this).find("price").text();
+
+                    output += name + " - " + price + "\n";
+                });
+
+                $("#display").text(output);
+            }
+        });
+
+    });
+
+});
+
+</script>
+
+<div class="topBtns">
+    <button id="loadJSON">Load JSON</button>
+    <button id="loadXML">Load XML</button>
+</div>
+
+<div id="display"></div>
+
+</body>
+</html>

@@ -23,8 +23,8 @@ after each selected choice you have to ask user if he | she want to repeate runn
                 if(input == null || input.trim() == "")
                     alert("input cannot be empty");
             }while(input == null || input.trim() == "");
-
             var arr = input.split(",");
+            
             var i = 0;
             var numArr = [];
 
@@ -52,19 +52,19 @@ after each selected choice you have to ask user if he | she want to repeate runn
 
                 switch(choice){
                     case "a":
-                        document.write(numArr + "<br>");
+                        document.write("a: " + numArr + "<br>");
                         break;
 
                     case "b":
-                        document.write(numArr.slice().sort(function(a,b){return a-b;}) + "<br>");
+                        document.write("b: " + numArr.slice().sort(function(a,b){return a-b;}) + "<br>");
                         break;
 
                     case "c":
-                        document.write(numArr.slice().sort(function(a,b){return a-b;}).reverse() + "<br>");
+                        document.write("c: " + numArr.slice().sort(function(a,b){return a-b;}).reverse() + "<br>");
                         break;
                         
                     case "d":
-                        document.write(numArr.slice().reverse() + "<br>");
+                        document.write("d: " + numArr.slice().reverse() + "<br>");
                         break;
 
                     case "e":
@@ -75,7 +75,7 @@ after each selected choice you have to ask user if he | she want to repeate runn
                             else if (even.length == 0)
                                 alert("your input has zero even numbers");
                         }
-                        document.write(even + "<br>");
+                        document.write("e: " + even + "<br>");
                         break;
 
                     case "f":
@@ -88,7 +88,7 @@ after each selected choice you have to ask user if he | she want to repeate runn
                             else if (divisible.length == 0)
                                 alert("None of the entered numbers is divisible by your divisor");
                         }
-                        document.write(divisible + "<br>");                    
+                        document.write("f: " + divisible + "<br>");                    
                         break;
 
                     case "g":
@@ -97,15 +97,15 @@ after each selected choice you have to ask user if he | she want to repeate runn
                         {
                             discounted.push(numArr[i]*0.7);
                         }
-                        document.write(discounted + "<br>")
+                        document.write("g: " + discounted + "<br>")
                         break;
 
                     case "h":
-                        document.write(numArr.join("***") + "<br>");
+                        document.write("h: " + numArr.join("***") + "<br>");
                         break;
                 }
                     
-            } while(confirm("Do you want to repeat?"));
+            } while(confirm("Do you want to continue?"));
             
         </script>
     </body>

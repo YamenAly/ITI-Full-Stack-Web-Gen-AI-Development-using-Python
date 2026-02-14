@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title></title>
+
+<script src="jq-3-7-1.js"></script>
+
+<style>
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    font-family:Arial;
+}
+
+.container{
+    display:flex;
+    gap:20px;
+    align-items:center;
+    margin-bottom: 30px;
+}
+
+.listContainer{
+    width:250px;
+    height:300px;
+    border:3px solid black;
+    padding:10px;
+    overflow:auto;
+}
+
+.selected{
+    color:red;
+}
+
+.controls{
+    margin-top:20px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+
+ul{
+    padding-left:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<script>
+
+$(function(){
+
+    $("#addBtn").on("click", function(){
+
+        let text = $("#course").val().trim();
+
+        if(text==="") return;
+
+        $("#left ul").append(`<li>${text}</li>`);
+
+        $("#course").val("");
+    });
+
+
+    $(document).on("click","li",function(){
+        $(this).toggleClass("selected");
+    });
+
+
+    $("#moveRight").on("click", function(){
+
+        $("#left li.selected").each(function(){
+            $(this)
+                .removeClass("selected")
+                .appendTo("#right ul");
+        });
+
+    });
+
+
+    $("#moveLeft").on("click", function(){
+
+        $("#right li.selected").each(function(){
+            $(this)
+                .removeClass("selected")
+                .appendTo("#left ul");
+        });
+
+    });
+
+});
+
+</script>
+
+<div class="container">
+        <div id="left" class="listContainer"><ul></ul></div>
+        <div id="right" class="listContainer"><ul></ul></div>
+</div>    
+<div>
+    <button id="moveLeft">&lt;</button>
+    <button id="moveRight">&gt;</button>
+</div>
+
+
+<div class="controls">
+    <p>Add Course</p>
+    <input type="text" id="course">
+    <button id="addBtn">Add</button>
+</div>
+
+</body>
+</html>
